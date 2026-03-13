@@ -1,35 +1,72 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <title>Kylpyhuone AR</title>
+    <title>Kylpyhuone AR 1:1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <style>
-        body { margin: 0; height: 100vh; display: flex; flex-direction: column; }
-        model-viewer { width: 100%; height: 90vh; background-color: #f0f0f0; }
-        .controls { height: 10vh; display: flex; justify-content: center; align-items: center; }
+        body { margin: 0; font-family: sans-serif; background-color: #1a1a1a; color: white; }
+        
+        /* Katselimen tyylit */
+        model-viewer {
+            width: 100%;
+            height: 100vh;
+            --poster-color: transparent;
+        }
+
+        /* Aloitusnäyttö ja painike */
+        #ar-button {
+            background-color: #007bff;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .instruction-overlay {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
     </style>
 </head>
 <body>
+
+    <div class="instruction-overlay">
+        <h2>Kylpyhuoneen suunnitelma 1:1</h2>
+        <p>Avaa AR ja osoita lattiaa</p>
+    </div>
 
     <model-viewer 
         src="kylpyhuone.glb" 
         ar 
         ar-modes="webxr scene-viewer quick-look" 
+        ar-scale="fixed"
+        ar-placement="floor"
         camera-controls 
-        shadow-intensity="1" 
-        auto-rotate>
+        touch-action="none"
+        shadow-intensity="1"
+        exposure="1"
+        environment-image="neutral">
         
-        <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; padding: 10px;">
-            👋 Avaa AR-näkymä
+        <button slot="ar-button" id="ar-button">
+            🚀 ALOITA AR-ESITTELY
         </button>
 
     </model-viewer>
-
-    <div class="controls">
-        <p>Osoita lattiaa ja liikuta puhelinta hitaasti.</p>
-    </div>
 
 </body>
 </html>
