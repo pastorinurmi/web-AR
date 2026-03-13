@@ -6,49 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <style>
-        body { margin: 0; font-family: sans-serif; background-color: #1a1a1a; color: white; }
-        
-        /* Katselimen tyylit */
-        model-viewer {
-            width: 100%;
-            height: 100vh;
-            --poster-color: transparent;
-        }
-
-        /* Aloitusnäyttö ja painike */
+        body { margin: 0; font-family: sans-serif; background-color: #1a1a1a; }
+        model-viewer { width: 100%; height: 100vh; --poster-color: transparent; }
         #ar-button {
-            background-color: #007bff;
-            border-radius: 30px;
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .instruction-overlay {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            text-align: center;
-            pointer-events: none;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            background-color: #007bff; border-radius: 30px; border: none; color: white;
+            padding: 15px 30px; position: absolute; bottom: 50px; left: 50%;
+            transform: translateX(-50%); z-index: 100; font-weight: bold;
         }
     </style>
 </head>
 <body>
-
-    <div class="instruction-overlay">
-        <h2>Kylpyhuoneen suunnitelma 1:1</h2>
-        <p>Avaa AR ja osoita lattiaa</p>
-    </div>
 
     <model-viewer 
         src="kylpyhuone.glb" 
@@ -58,9 +25,7 @@
         ar-placement="floor"
         camera-controls 
         touch-action="none"
-        shadow-intensity="1"
-        exposure="1"
-        environment-image="neutral">
+        shadow-intensity="1">
         
         <button slot="ar-button" id="ar-button">
             🚀 ALOITA AR-ESITTELY
